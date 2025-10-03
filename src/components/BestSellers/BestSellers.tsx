@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from 'react-router'
 
 
 export type Product = {
@@ -8,8 +9,10 @@ export type Product = {
     title: string;
     price: number;
     description: string;
-    category: string;
-    image: string;
+    category: {
+        name: string;
+    };
+    images: string;
     rating: {
         rate: number;
         count: number;
@@ -19,15 +22,17 @@ export type Product = {
     __v: number;
 };
 
+
 export const BestSellers = () => {
 
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
-        axios.get('https://masterclass.kimitsu.it-incubator.io/api/products')
+        axios.get('https://api.escuelajs.co/api/v1/products')
             .then((res) => {
                 const products = res.data;
                 setProducts(products)
+                console.log(products[0])
             })
             .catch((err) => {
                 console.log("Ошибка при загрузке продуктов", err)
@@ -42,10 +47,10 @@ export const BestSellers = () => {
                     products.map((pr) => {
                         return (
                             <div key={pr.id} className="card">
-                                <img src={pr.image} alt="img" />
+                                <img src={pr.images[0]} alt={pr.title} />
                                 <h4>{pr.title}</h4>
                                 <p className="price">${pr.price}</p>
-                                <button>Show more</button>
+                                <Link to={`/product/${pr.id}`}>Show more</Link>
                             </div>
                         );
                     })
