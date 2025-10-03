@@ -265,11 +265,15 @@
 }
 
 .review textarea::placeholder {
-  color: #22262A;
+  color: #727272;
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
 
+}
+
+.review textarea:focus-visible {
+  border-color: #2068F8;
 }
 
 .review button {
@@ -308,12 +312,17 @@
 
 .reviewField .info .user img {
   margin-right: 12px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
 
 
 .reviewField .info .user .infoBox {
   display: flex;
   flex-direction: column;
+  margin-top: 15px;
+  margin-left: 15px;
 }
 
 .reviewField .info .user .infoBox .author {
@@ -325,7 +334,7 @@
 }
 
 .reviewField .info .user .infoBox .rating {
-  margin: 0;
+  margin: 15px 0 0 0;
 }
 
 

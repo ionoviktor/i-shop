@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
 
 export type Product = {
@@ -32,7 +32,6 @@ export const BestSellers = () => {
             .then((res) => {
                 const products = res.data;
                 setProducts(products)
-                console.log(products[0])
             })
             .catch((err) => {
                 console.log("Ошибка при загрузке продуктов", err)
